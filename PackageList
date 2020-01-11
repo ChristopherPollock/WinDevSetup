@@ -1,6 +1,7 @@
 lastpass
 lastpass-for-applications
 grammarly
+kindle
 windirstat
 notepadplusplus
 googlechrome
@@ -16,6 +17,7 @@ discord
 icloud
 itunes
 vlc
+terraform
 git
 gitextensions
 github-desktop
@@ -27,9 +29,8 @@ chocolatey-vscode
 awscli
 aws-vault
 awslambdapscore
-docker-desktop
-vmwareworkstation
 virtualbox
+vmwareworkstation
 cygwin
 filezilla
 superputty
