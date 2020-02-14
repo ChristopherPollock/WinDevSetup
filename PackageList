@@ -1,3 +1,4 @@
+fscapture
 lastpass
 lastpass-for-applications
 grammarly
@@ -17,7 +18,9 @@ discord
 icloud
 itunes
 vlc
+postman
 terraform
+consul
 git
 gitextensions
 github-desktop
@@ -25,7 +28,10 @@ vscode
 python
 vscode-python
 vscode-gitlens
+vscode-docker
+skaffold
 chocolatey-vscode
+nodejs
 awscli
 aws-vault
 awslambdapscore

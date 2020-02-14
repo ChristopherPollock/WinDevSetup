@@ -9,7 +9,7 @@
             "name": "PowerShell: Attach to PowerShell Host Process",
             "type": "PowerShell",
             "request": "attach",
-            "runspaceId": 1
+            "runspaceId": 1,
         }
     ]
 }
