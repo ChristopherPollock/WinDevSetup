@@ -15,4 +15,4 @@ if (!$Chocoinstalled) {
 #Base installs from community repo: https://chocolatey.org/packages
 Get-Content ".\packagelist" | ForEach-Object {$_ -split "\r\n"} | ForEach-Object {choco install -y $_}
 
-.\dockerinstaller.ps1
+#.\dockerinstaller.ps1
