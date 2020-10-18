@@ -36,7 +36,7 @@ awscli
 aws-vault
 awslambdapscore
 virtualbox
-vmwareworkstation
+#vmwareworkstation
 cygwin
 filezilla
 superputty
