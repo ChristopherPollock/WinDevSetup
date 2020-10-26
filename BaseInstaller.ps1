@@ -1,6 +1,8 @@
 # install/Boostrap Chocolatey. Detailed instructions: https://chocolatey.org/install
 # Requires -RunAsAdministrator, Set-ExecutionPolicy Bypass -Scope Process
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+# Old commmand: Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
 $Chocoinstalled = $false
 if (get-command choco.exe -ErrorAction SilentlyContinue){
     $Chocoinstalled = $true

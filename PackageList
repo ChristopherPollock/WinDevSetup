@@ -8,7 +8,7 @@ notepadplusplus
 googlechrome
 chrome-remote-desktop-chrome
 adobereader
-jre8
+javaruntime
 firefox
 7zip.install
 winrar
@@ -19,7 +19,7 @@ icloud
 itunes
 vlc
 postman
-
+openssl
 terraform
 consul
 git
@@ -27,9 +27,10 @@ gitextensions
 github-desktop
 wsl2
 wslgit
-vscode
 python
 docker-desktop
+kdiff3
+vscode
 vscode-kubernetes-tools
 chocolatey-vscode
 vscode-python
@@ -51,7 +52,6 @@ awscli
 aws-vault
 awslambdapscore
 virtualbox
-#vmwareworkstation
 cygwin
 filezilla
 superputty
@@ -62,3 +62,5 @@ sysinternals
 wireshark
 advanced-ip-scanner
 nmap
+burp-suite-free-edition
+#vmwareworkstation
