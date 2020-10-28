@@ -2,6 +2,8 @@
 # Requires -RunAsAdministrator, Set-ExecutionPolicy Bypass -Scope Process
 # Old commmand: Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+Install-Module -Force OpenSSHUtils -Scope AllUsers
+choco install gnupg
 
 $Chocoinstalled = $false
 if (get-command choco.exe -ErrorAction SilentlyContinue){

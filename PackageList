@@ -25,12 +25,14 @@ consul
 git
 gitextensions
 github-desktop
+gnupg
 wsl2
 wslgit
 python
 docker-desktop
 kdiff3
 vscode
+vscode-azurerm-tools
 vscode-kubernetes-tools
 chocolatey-vscode
 vscode-python
