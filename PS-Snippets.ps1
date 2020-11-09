@@ -2,7 +2,6 @@
 get-executionpolicy -list
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
-
 #Disable the the hyper-v hypervisor on next boot
 bcdedit /set hypervisorlaunchtype off
 
