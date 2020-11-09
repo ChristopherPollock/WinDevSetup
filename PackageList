@@ -1,6 +1,5 @@
-fscapture
 lastpass
-lastpass-for-applications
+fscapture
 grammarly
 kindle
 windirstat
@@ -30,6 +29,7 @@ wslgit
 python
 docker-desktop
 kdiff3
+drawio
 vscode
 vscode-kubernetes-tools
 chocolatey-vscode
