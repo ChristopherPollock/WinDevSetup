@@ -51,8 +51,6 @@ nodejs
 awscli
 aws-vault
 awslambdapscore
-virtualbox
-cygwin
 filezilla
 superputty
 putty
