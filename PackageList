@@ -1,3 +1,5 @@
+wsl2
+gnupg
 fscapture
 grammarly
 kindle
@@ -11,9 +13,6 @@ firefox
 7zip.install
 winrar
 slack
-discord
-icloud
-itunes
 vlc
 postman
 openssl
@@ -23,7 +22,6 @@ git
 gitextensions
 github-desktop
 gnupg
-wsl2
 wslgit
 python
 docker-desktop
@@ -55,10 +53,9 @@ filezilla
 superputty
 putty
 winscp
-rdcman
 sysinternals
 wireshark
-advanced-ip-scanner
 nmap
 burp-suite-free-edition
-#vmwareworkstation
+advanced-ip-scanner
+microsoft-windows-terminal
