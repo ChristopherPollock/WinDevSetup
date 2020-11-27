@@ -2,10 +2,10 @@
 # Requires -RunAsAdministrator, Set-ExecutionPolicy Bypass -Scope Process
 # Old commmand: Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-echo "don't forget to also run the WSL2 update https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
+write-output "don't forget to also run the WSL2 update https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
 Invoke-WebRequest https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi -outfile installer.msi
 Start-Process .\installer.msi -Wait -ArgumentList '/quiet'
-rm installer.msi
+remove-item installer.msi
 
 install-module oh-my-posh -scope CurrentUser -force
 install-module posh-git -Scope CurrentUser -force
