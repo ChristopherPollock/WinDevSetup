@@ -1,3 +1,9 @@
+<# #things to manually instll and configure
+-Windows terminal customizations
+git posh
+
+
+#>
 # install/Boostrap Chocolatey. Detailed instructions: https://chocolatey.org/install
 # Requires -RunAsAdministrator, Set-ExecutionPolicy Bypass -Scope Process
 # Old commmand: Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
