@@ -1,11 +1,11 @@
 <#
     Prerequisites for runningthis script:
     =====================================
-    1. set teh execution policy with:
-    Set-ExecutionPolicy Bypass -Scope Process
-    set-executionpolicy remotesigned
+    1. set the execution policy with:
+        Set-ExecutionPolicy Bypass -Scope Process
+        set-executionpolicy remotesigned
     2. Run this script as an administrator by adding this switch
-    -RunAsAdministrator
+        .\bootstrap.ps1 -RunAsAdministrator
 
     Install Overview Notes:
     =======================
