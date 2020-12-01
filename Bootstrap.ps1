@@ -9,18 +9,33 @@
 
     Install Overview Notes:
     =======================
-    - Install Windows Subsystem for Linux (WSL)
     - Install Chocolately
+    - Install Windows Subsystem for Linux (WSL)
     - Run through packagelist to install each choco package
     - Download and Install WSL2 update
     - Download and install Powershell Core
     - Apply Windows Terminal settings.json file
     - Set up Windows ternminal powerline
-#>
 
-# Install Windows Subsystem for Linux (WSL)
-write-output "Installing Windows Subsystem for Linux (WSL)"
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+    Next Mods required
+    ==================
+
+    Manual Installation steps after this script is complete (will figure out how to script some of this stuff later)
+    =======================================================
+    - VSCode Plugin Install: Shell Launcher + change keymap (https://github.com/Tyriar/vscode-shell-launcher)
+    - VSCode github connect and sync settings
+    - Putty full installer (choco package only seems to be the limited )
+    - Enable and autostart OpenSSH Agent Service
+    - set up SSH keys & adding to local vault
+    - Set up GNU Privacy Guard
+    - Sett up Git default options
+    - 
+
+    vscode settings.json
+    ====================
+    "terminal.integrated.fontFamily": "Cascadia Code PL",
+    "terminal.integrated.shellArgs.windows": ["-NoLogo"]
+#>
 
 # install/Boostrap Chocolatey. Detailed instructions: https://chocolatey.org/install
 $Chocoinstalled = $false
@@ -35,7 +50,11 @@ if (!$Chocoinstalled) {
 }
 
 #Choco Intallations from community repo: https://chocolatey.org/packages
-Get-Content ".\Choco_PackageList" | ForEach-Object {$_ -split "\r\n"} | ForEach-Object {choco install -y $_}
+Get-Content ".\Choco_PackageList" | ForEach-Object {$_ -split "\r\n"} | ForEach-Object {
+    if ($_.substring(0,1) -ne '#') {
+        choco install -y $_
+    }
+}
 
 # Install  the required update for WSL2
 .\Install_WSL2.ps1

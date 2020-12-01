@@ -11,6 +11,7 @@ if (!(Test-Path -Path $PROFILE)) {
 
 $PoshGit="Import-Module posh-git"
 $OhMyGosh="Import-Module oh-my-posh"
+$PSRL="PSReadLine"
 $SetTheme="Set-Theme Paradox"
 
 if (!(select-string -path $PROFILE -pattern $PoshGit)) {
@@ -19,6 +20,10 @@ if (!(select-string -path $PROFILE -pattern $PoshGit)) {
 
 if (!(select-string -path $PROFILE -pattern $OhMyGosh)) {
     add-content -Path $PROFILE -value $OhMyGosh
+}
+
+if (!(select-string -path $PROFILE -pattern $PSRL)) {
+    add-content -Path $PROFILE -value $PSRL
 }
 
 if (!(select-string -path $PROFILE -pattern $SetTheme)) {
@@ -38,11 +43,11 @@ Remove-Item $FontFile
 
 write-output "Installing Cascadia fonts for powerline customization..."
 New-Item $TempFolder -Type Directory -Force | Out-Null
-Get-ChildItem -Path $Source -Include '*PL*.ttf','*PL*.ttc','*PL*.otf' -Recurse | ForEach {
+Get-ChildItem -Path $Source -Include '*PL*.otf' -Recurse | ForEach-Object {
 
     If (!(Test-Path $env:windir\Fonts\$($_.Name))) {
-        $msg=$env:windir + "\Fonts\" + $($_.Name) + "; " + (Test-Path $env:windir\Fonts\$($_.Name)).ToString()
-        [System.Windows.MessageBox]::Show($msg)
+        #$msg=$env:windir + "\Fonts\" + $($_.Name) + "; " + (Test-Path $env:windir\Fonts\$($_.Name)).ToString()
+        #[System.Windows.MessageBox]::Show($msg)
 
         $Font = "$TempFolder\$($_.Name)"
         
@@ -56,6 +61,5 @@ Get-ChildItem -Path $Source -Include '*PL*.ttf','*PL*.ttc','*PL*.otf' -Recurse |
         Remove-Item $Font -Force
     }
 }
-
 Remove-Item -Recurse -force $SourceDir
 write-output "Completed Powerline Installation and Config!  Open a new terminal Windows Terminal window to see the changes."
