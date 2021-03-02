@@ -8,7 +8,7 @@ googlechrome
 chrome-remote-desktop-chrome
 firefox
 javaruntime
-adobereader
+#adobereader
 7zip.install
 winrar
 fscapture
