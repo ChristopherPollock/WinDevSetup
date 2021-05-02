@@ -19,6 +19,8 @@
 
     Next Mods required
     ==================
+    - install "MesloLGM NF" Font set
+    - install WTTerminal to add ability to modify config from command.
 
     Manual Installation steps after this script is complete (will figure out how to script some of this stuff later)
     =======================================================
@@ -33,6 +35,7 @@
 
     vscode settings.json
     ====================
+    "terminal.integrated.fontFamily": "MesloLGM NF",
     "terminal.integrated.fontFamily": "Cascadia Code PL",
     "terminal.integrated.shellArgs.windows": ["-NoLogo"]
 #>
