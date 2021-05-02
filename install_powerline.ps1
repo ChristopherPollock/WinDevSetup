@@ -32,16 +32,18 @@ if (!(select-string -path $PROFILE -pattern $SetTheme)) {
 
 # PowerLine Cascadia font download and install for Powerline customization.  This font contains the special git-related glyphs that powerline needs to fancy-up the prompt.
 write-output "Downloading Cascadia font for powerline customization..."
-$FontFile="CascadiaCode-2009.22.zip"
+$FontFile="PowerlineFonts.zip"
 $SourceDir   = ".\font\"
 $Source      = ".\font\*"
 $Destination = (New-Object -ComObject Shell.Application).Namespace(0x14)
 $TempFolder  = "C:\Windows\Temp\Fonts"
-Invoke-WebRequest https://github.com/microsoft/cascadia-code/releases/download/v2009.22/CascadiaCode-2009.22.zip -outfile $FontFile
-Expand-Archive -LiteralPath $FontFile -DestinationPath $SourceDir
-Remove-Item $FontFile
+#Invoke-WebRequest https://github.com/microsoft/cascadia-code/releases/download/v2009.22/CascadiaCode-2009.22.zip -outfile $FontFile
+Invoke-WebRequest -Uri 'https://github.com/powerline/fonts/archive/master.zip' -OutFile $FontFile
+Expand-Archive $FontFile
+.\PowerlineFonts\fonts-master\install.ps1
+#Remove-Item $FontFile
 
-write-output "Installing Cascadia fonts for powerline customization..."
+<# write-output "Installing Cascadia fonts for powerline customization..."
 New-Item $TempFolder -Type Directory -Force | Out-Null
 Get-ChildItem -Path $Source -Include '*PL*.otf' -Recurse | ForEach-Object {
 
@@ -60,6 +62,6 @@ Get-ChildItem -Path $Source -Include '*PL*.otf' -Recurse | ForEach-Object {
         # Delete temporary copy of font
         Remove-Item $Font -Force
     }
-}
+} #>
 Remove-Item -Recurse -force $SourceDir
 write-output "Completed Powerline Installation and Config!  Open a new terminal Windows Terminal window to see the changes."

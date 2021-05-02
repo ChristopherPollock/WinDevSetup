@@ -28,7 +28,7 @@
     - Enable and autostart OpenSSH Agent Service
     - set up SSH keys & adding to local vault
     - Set up GNU Privacy Guard
-    - Sett up Git default options
+    - Set up Git default options
     - 
 
     vscode settings.json
