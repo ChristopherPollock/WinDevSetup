@@ -2,8 +2,36 @@
 <# write-output "Installing posh-git and oh-my-posh in support of powerline customization for Windows Terminal"
 install-module oh-my-posh -scope CurrentUser -force
 install-module posh-git -Scope CurrentUser -force
-install-module wttoolbox -Scope CurrentUser -force #>
-
+install-module wttoolbox -Scope CurrentUser -force
+ #>function add-Font() {
+    [CmdletBinding()]
+    param (
+        [parameter()]$FontURI,
+        [parameter()]$FontFile,
+        [parameter()]$Fontdir
+    )
+    # downloads the compressed font File, expands it, then deletes the base file
+    Invoke-WebRequest -Uri $FontURI -OutFile $FontFile
+    Expand-Archive $FontFile -DestinationPath $Fontdir 
+    Remove-item $FontFile
+    
+    #font variables
+    $FontItem = Get-Item -Path $Fontdir
+    $FontList = Get-ChildItem -Path "$FontItem\*" -Include ('*.fon','*.otf','*.ttc','*.ttf') -Recurse 
+    
+    #for each font
+    foreach ($Font in $FontList) {
+        Try {
+           
+            $Installedfont = Get-ItemPropertyValue -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Fonts"  -Name $Font.Basename
+        }
+        Catch {
+            Copy-Item $Font "C:\Windows\Fonts"
+            New-ItemProperty -Name $Font.BaseName -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Fonts" -PropertyType string -Value $Font.name
+        }
+    }
+    Remove-Item -Recurse -force $Fontdir
+}
 
 # Customize the powershell prompt
 write-output "Writing customizations for Powershell command prompt..."
@@ -32,43 +60,27 @@ if (!(select-string -path $PROFILE -pattern $SetTheme)) {
     add-content -Path $PROFILE -value $SetTheme 
 }
 
+write-output "Downloading MS Cascadia Code font..."
+$FontURI = 'https://github.com/microsoft/cascadia-code/releases/download/v2102.25/CascadiaCode-2102.25.zip' 
+$FontFile = '.\CascadiaCode-2102.25.zip'
+$Fontdir = '.\CascadiaCode-2102.25\'
+
+add-Font $FontURI $FontFile $Fontdir
+
 # PowerLine Cascadia font download and install for Powerline customization.  This font contains the special git-related glyphs that powerline needs to fancy-up the prompt.
-write-output "Downloading Powerline font for powerline customization..."
-$FontFile="CascadiaCode.zip"
-$Fontdir = ".\CascadiaCode\"
-#Invoke-WebRequest -Uri 'https://github.com/powerline/fonts/archive/master.zip' -OutFile $FontFile
-Invoke-WebRequest -Uri 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip' -OutFile $FontFile
-Expand-Archive $FontFile
-Remove-item $FontFile
+write-output "Downloading Caskadia font..."
+$FontURI = 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip' 
+$FontFile =".\CaskadiaCode.zip"
+$Fontdir = ".\CaskadiaCode\"
 
-$FontItem = Get-Item -Path $Fontdir
-$FontList = Get-ChildItem -Path "$FontItem\*" -Include ('*.fon','*.otf','*.ttc','*.ttf')
-
-foreach ($Font in $FontList) {
-    Write-Host 'Installing font -' $Font.BaseName
-    Copy-Item $Font "C:\Windows\Fonts"
-    New-ItemProperty -Name $Font.BaseName -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Fonts" -PropertyType string -Value $Font.name
-}
-Remove-Item -Recurse -force $Fontdir
-
-
+add-Font $FontURI $FontFile $Fontdir
 
 # Installs new fonts for "All users" - requires elevated admin priv to run this
-write-output "Downloading Meslo Nerd font for powerline customization..."
-$FontFile ="Meslo.zip"
-$Fontdir = ".\Meslo\"
-Invoke-WebRequest -Uri 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip' -OutFile $FontFile
-Expand-Archive $FontFile
-Remove-item $FontFile
+write-output "Downloading Meslo Nerd font..."
+$FontURI = 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip'
+$FontFile = ".\Meslo.zip"
+$Fontdir =  ".\Meslo\"
 
-$FontItem = Get-Item -Path $Fontdir
-$FontList = Get-ChildItem -Path "$FontItem\*" -Include ('*.fon','*.otf','*.ttc','*.ttf')
+add-Font $FontURI $FontFile $Fontdir
 
-foreach ($Font in $FontList) {
-    Write-Host 'Installing font -' $Font.BaseName
-    Copy-Item $Font "C:\Windows\Fonts"
-    New-ItemProperty -Name $Font.BaseName -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Fonts" -PropertyType string -Value $Font.name
-}
-
-Remove-Item -Recurse -force $Fontdir
 write-output "Completed Powerline Installation and Config!  Open a new terminal Windows Terminal window to see the changes."
