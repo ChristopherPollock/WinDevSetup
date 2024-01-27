@@ -1,54 +1,14 @@
 # Comment out stuff you don't want to install #
 #
-#===========================
-#General Apps & Utilities
-#===========================
-slack
-googlechrome
-chrome-remote-desktop-chrome
-firefox
-javaruntime
-#adobereader
-7zip.install
-winrar
-fscapture
-windirstat
-kindle
-grammarly
-vlc
-obs-studio.install
-powertoys
-winaero-tweaker
-#===========================
-#Encryption
-#===========================
-openssl
-gnupg
+
 #===========================
 #Development Stuff
 #===========================
-docker-desktop
-git
-gitextensions
-github-desktop
-wslgit
-microsoft-windows-terminal
-#gcloudsdk
-azure-cli
-awscli
 aws-vault
 awslambdapscore
-notepadplusplus
-kdiff3
-postman
-terraform
-consul
-python
-drawio
 #===========================
 # VSCode and Related Plugins
 #===========================
-vscode
 chocolatey-vscode
 vscode-azurerm-tools
 vscode-kubernetes-tools
@@ -58,19 +18,7 @@ vscode-docker
 vscode-yaml
 vscode-drawio
 skaffold
-nodejs
 #===========================
 #Remote Access Utilities
 #===========================
 filezilla
-superputty
-putty.install
-winscp
-#===========================
-#Network and Security Utilities
-#===========================
-sysinternals
-wireshark
-nmap
-burp-suite-free-edition
-advanced-ip-scanner

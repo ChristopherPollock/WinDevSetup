@@ -9,8 +9,9 @@
 
     Install Overview Notes:
     =======================
-    - Install Chocolately
     - Install Windows Subsystem for Linux (WSL)
+    - Install Chocolately
+
     - Run through packagelist to install each choco package
     - Download and Install WSL2 update
     - Download and install Powershell Core
@@ -40,6 +41,11 @@
     "terminal.integrated.shellArgs.windows": ["-NoLogo"]
 #>
 
+#Install WSL
+wsl --install
+wsl --install -d kali-linux
+wsl --install -d Ubuntu
+
 # install/Boostrap Chocolatey. Detailed instructions: https://chocolatey.org/install
 $Chocoinstalled = $false
 if (get-command choco.exe -ErrorAction SilentlyContinue){
@@ -51,22 +57,27 @@ if (!$Chocoinstalled) {
     Set-ExecutionPolicy Bypass -Scope Process -Force
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
+#Winget installs (try to use winget by default, use choco for packages that aren't available in the Microsoft public repos) https://chocolatey.org/packages
+Get-Content ".\winget_PackageList" | ForEach-Object {$_ -split "\r\n"} | ForEach-Object {
+    if ($_.substring(0,1) -ne '#') {
+        winget install $_ --silent --accept-package-agreements --accept-source-agreements
+    }
+}
 
-#Choco Intallations from community repo: https://chocolatey.org/packages
+#Choco Installations from community repo: https://chocolatey.org/packages
 Get-Content ".\Choco_PackageList" | ForEach-Object {$_ -split "\r\n"} | ForEach-Object {
     if ($_.substring(0,1) -ne '#') {
         choco install -y $_
     }
 }
 
-# Install  the required update for WSL2
-.\Install_WSL2.ps1
+#install the oh-my-posh fonts  https://ohmyposh.dev/docs/installation/fonts
+$env:Path += ";C:\Users\user\AppData\Local\Programs\oh-my-posh\bin"
+oh-my-posh font install
 
-# Install Powershell Core
-.\Install_PSCore.ps1
+# Install  the required update for WSL2
+#.\Install_WSL2.ps1
+
 
 # PowerLine for Windows Terminal install posh-git and oh-my-posh
-.\Install_Powerline.ps1
-
-#write-output "Updating help..."
-#update-help
+#.\Install_Powerline.ps1
