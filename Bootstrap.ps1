@@ -177,7 +177,7 @@ Get-Content $textFilePath | ForEach-Object {
     }
 }
 write-host "=============================================================="
-Write-host "Installing apps from winget from file '"$textFilePath"'"
+Write-host "Installing apps from Chocolatey from file '"$textFilePath"'"
 write-host "=============================================================="
 #install the apps
 foreach ($key in $Applist.keys) {
