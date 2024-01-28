@@ -130,7 +130,7 @@ foreach ($key in $Applist.keys) {
     $listApp = winget list -q $key
     #Write-host  $Applist[$key] $key `n $listApp 
     if (![String]::Join("", $listApp).Contains($key)) {
-        Write-host "Installing:" $key "(line" $Applist[$key] ")"
+        Write-host "Installing:" $key "(line" $Applist[$key]")"
         winget install --silent $key --accept-package-agreements
     }
     else {
