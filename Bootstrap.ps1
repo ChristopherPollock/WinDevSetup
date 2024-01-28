@@ -121,32 +121,66 @@ Get-Content $textFilePath | ForEach-Object {
     #check if the item is not a comment 
     if ($_.substring(0,1) -ne '#') {
         # Add the line (as key) and index (as value) to the hash table
-        $Applist[$_.Trim()] = $index
+        $Applist[$index] = $_.Trim()
+        # $Applist[$_.Trim()] = $index
     }
 }
 
 #install the apps
+write-host "=============================================================="
+Write-host "Installing apps from winget from file'" $textFilePath "'"
+write-host "=============================================================="
 foreach ($key in $Applist.keys) {
-    $listApp = winget list -q $key
-    #Write-host  $Applist[$key] $key `n $listApp 
-    if (![String]::Join("", $listApp).Contains($key)) {
-        Write-host "Installing:" $key "(line" $Applist[$key]")"
-        winget install --silent $key --accept-package-agreements
+    $listApp = winget list -q $Applist[$key]
+    # Write-host  "Value:" $Applist[$key] "Key:" $key
+    if (![String]::Join("", $listApp).Contains($Applist[$key])) {
+        Write-host "Installing:" $Applist[$key] "(line" $key")"
+        winget install --silent $Applist[$key] --accept-package-agreements
     }
     else {
-        Write-host "Skipping Install of" $key "(line" $Applist[$key]")"
+        Write-host "Skipping Install of" $Applist[$key]"(line" $key")"
     }
 }
 
 #==================================================================================================
 #Choco App Installs. from community repo: https://chocolatey.org/packages
 #==================================================================================================
+# Define the path to your text file
+$textFilePath = ".\choco_PackageList"
 
-Get-Content ".\Choco_PackageList" | ForEach-Object {$_ -split "\r\n"} | ForEach-Object {
+# Create an empty hash table
+$Applist = @{}
+
+# Initialize an index counter
+$index = 0
+
+# Read each line from the file
+Get-Content $textFilePath | ForEach-Object {
+    # Increment the index counter
+    $index++
+
+    #check if the item is not a comment 
     if ($_.substring(0,1) -ne '#') {
-        choco install -y $_
+        # Add the line (as key) and index (as value) to the hash table
+        $Applist[$index] = $_.Trim()
     }
 }
+write-host "=============================================================="
+Write-host "Installing apps from winget from file'" $textFilePath "'"
+write-host "=============================================================="
+#install the apps
+foreach ($key in $Applist.keys) {
+    $listApp = choco list $Applist[$key]
+    # Write-host  "Value:" $Applist[$key] "Key:" $key
+    if (![String]::Join("", $listApp).Contains($Applist[$key])) {
+        Write-host "Installing:" $Applist[$key] "(line" $key")"
+        choco install -y $Applist[$key]
+    }
+    else {
+        Write-host "Skipping Install of" $Applist[$key]"(line" $key")"
+    }
+}
+
 
 #==================================================================================================
 #App Configuration Section

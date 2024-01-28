@@ -9,13 +9,9 @@ awslambdapscore
 #===========================
 chocolatey-vscode
 vscode-azurerm-tools
-vscode-kubernetes-tools
-vscode-python
 vscode-gitlens
-vscode-docker
-vscode-yaml
-vscode-drawio
 skaffold
+WSLGit
 #===========================
 #Remote Access Utilities
 #===========================
