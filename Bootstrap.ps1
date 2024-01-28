@@ -53,6 +53,9 @@ wsl --install -d Ubuntu
 #==================================================================================================
 #Package Manager Installation  (Winget and Chocolatey) 
 #==================================================================================================
+write-host "=============================================================="
+Write-host "Installing Package Managers (Winget and Chocolatey)"
+write-host "=============================================================="
 
 #Install & Configure WinGet.  Based on this gist: https://gist.github.com/crutkas/6c2096eae387e544bd05cde246f23901
 $hasPackageManager = Get-AppPackage -name 'Microsoft.DesktopAppInstaller'
@@ -128,7 +131,7 @@ Get-Content $textFilePath | ForEach-Object {
 
 #install the apps
 write-host "=============================================================="
-Write-host "Installing apps from winget from file'" $textFilePath "'"
+Write-host "Installing apps from winget from file '"$textFilePath"'"
 write-host "=============================================================="
 foreach ($key in $Applist.keys) {
     $listApp = winget list -q $Applist[$key]
@@ -166,7 +169,7 @@ Get-Content $textFilePath | ForEach-Object {
     }
 }
 write-host "=============================================================="
-Write-host "Installing apps from winget from file'" $textFilePath "'"
+Write-host "Installing apps from winget from file '"$textFilePath"'"
 write-host "=============================================================="
 #install the apps
 foreach ($key in $Applist.keys) {
@@ -183,7 +186,7 @@ foreach ($key in $Applist.keys) {
 
 
 #==================================================================================================
-#App Configuration Section
+#App Configurations
 #==================================================================================================
 
 #oh-my-posh font installation  https://ohmyposh.dev/docs/installation/fonts
