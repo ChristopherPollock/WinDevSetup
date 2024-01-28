@@ -38,6 +38,7 @@ TechSmith.Snagit.2024
 #===========================
 #Microsoft.PowerAutomateDesktop | as of Jan 28 , this package has known issues in the winget repo
 #Microsoft.PowerBI | as of Jan 28 , this package has known issues in the winget repo
+"Power Apps"
 #===========================
 #Development IDEs, SDKs, plugins libraries and tools
 #===========================

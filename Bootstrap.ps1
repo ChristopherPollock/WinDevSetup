@@ -51,6 +51,7 @@ write-host "=============================================================="
 
 #Install WSL
 wsl --install
+wsl --update
 wsl --install -d kali-linux
 wsl --install -d Ubuntu
 
