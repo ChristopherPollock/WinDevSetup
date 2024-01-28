@@ -25,18 +25,19 @@ JGraph.Draw
 #===========================
 #Development
 #===========================
+Microsoft.VCRedist.2015+.x64
 KDE.KDiff3
 Notepad++.Notepad++
 Microsoft.XMLNotepad
-microsoft.VisualStudioCode
+Microsoft.VisualStudioCode
 Microsoft.DotNet.SDK.8
 Oracle.JDK.21
-python.python.3.9
-git.git
-github.githubdesktop
+Python.Python.3.9
+Git.Git
+GitHub.GitHubDesktop
 GitExtensionsTeam.GitExtensions
 Hashicorp.Terraform
-hashicorp.vault
+Hashicorp.Vault
 #Hashicorp.Packer
 #Hashicorp.Vagrant
 #Hashicorp.Boundary
@@ -47,15 +48,17 @@ Microsoft.PowerAutomateDesktop
 OpenJS.NodeJS
 Postman.Postman.Canary
 Obsidian.Obsidian
-github.cli
+GitHub.cli
 Microsoft.PowerAppsCLI
 Amazon.AWSCLI
 Microsoft.AzureCLI
 Google.CloudSDK
+Figma.Figma
+Miro.Miro
 #===========================
 #content creator
 #===========================
-obsproject.obsstudio
+OBSProject.OBSStudio
 #===========================
 # Utilities
 #===========================
@@ -67,12 +70,12 @@ RARLab.WinRAR
 WinDirStat.WinDirStat
 FireDaemon.OpenSSL
 GnuPG.Gpg4win
-microsoft.windowsTerminal
-microsoft.powertoys
-microsoft.powershell
-docker.dockerdesktop
-sysinternals
-technsmith.snagit.2024
+Microsoft.WindowsTerminal
+Microsoft.PowerToys
+Microsoft.PowerShell
+Docker.DockerDesktop
+Sysinternals
+TechSmith.Snagit.2024
 #===========================
 # WSL Images
 #===========================
