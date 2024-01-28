@@ -45,6 +45,10 @@
 #==================================================================================================
 #Windows Prep/ configuration
 #==================================================================================================
+write-host "=============================================================="
+Write-host "Enabling Windows features and enabling required services "
+write-host "=============================================================="
+
 #Install WSL
 wsl --install
 wsl --install -d kali-linux
@@ -95,6 +99,7 @@ $settingsJson | Out-File $settingsPath -Encoding utf8
 $Chocoinstalled = $false
 if (get-command choco.exe -ErrorAction SilentlyContinue){
     $Chocoinstalled = $true
+    "Chocolatey already installed"
 }
 
 if (!$Chocoinstalled) {
@@ -184,6 +189,15 @@ foreach ($key in $Applist.keys) {
     }
 }
 
+#==================================================================================================
+#Download and install VST plugins for audio production
+#==================================================================================================
+#the following VSTs are not in any public repos and also not downloadable without a login/licensee, so will need to set up and maintain a custom repo for these
+# La Petite Excite (by Fine Cut Bodies https://www.finecutbodies.com/?p=sound)
+# TDR Nova (by Tokyo Dawn Records https://www.tokyodawn.net/tdr-nova/)
+# Renegate (by Auburn Sounds https://www.auburnsounds.com/products/Renegate.html)
+# Frontier (by D16 Group https://d16.pl/frontier)
+# T-DEsser (by Techivation https://techivation.com/t-de-esser/)
 
 #==================================================================================================
 #App Configurations

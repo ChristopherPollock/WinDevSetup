@@ -15,12 +15,12 @@ Mozilla.Firefox
 VideoLAN.VLC
 Amazon.Kindle
 Amazon.SendToKindle
-Adobe.Acrobat.Reader.64-bit
 Grammarly.Grammarly.Office
 Grammarly.Grammarly 
 #Microsoft.Teams
 #Microsoft.OneDrive
 #Microsoft.Office
+#Adobe.Acrobat.Reader.64-bit | as of Jan 28 , this package has known issues in the winget repo
 #===========================
 #content creator
 #===========================
@@ -36,8 +36,8 @@ TechSmith.Snagit.2024
 #===========================
 #Data Management & Visualization
 #===========================
-Microsoft.PowerAutomateDesktop
-Microsoft.PowerBI
+#Microsoft.PowerAutomateDesktop | as of Jan 28 , this package has known issues in the winget repo
+#Microsoft.PowerBI | as of Jan 28 , this package has known issues in the winget repo
 #===========================
 #Development IDEs, SDKs, plugins libraries and tools
 #===========================
@@ -59,8 +59,7 @@ Microsoft.VisualStudioCode
 Microsoft.XMLNotepad
 Notepad++.Notepad++
 KDE.KDiff3
-Postman.Postman
-Postman.Postman.Canary
+Postman
 Hashicorp.Terraform
 Hashicorp.Vault
 #Hashicorp.Packer
@@ -102,3 +101,11 @@ Yubico.YubikeyManager
 #===========================
 #kalilinux.kalilinux
 #Ubuntu
+#===========================
+# Audio FIlters (VSTs)
+#===========================
+# La Petite Excite (by Fine Cut Bodies https://www.finecutbodies.com/?p=sound)
+# TDR Nova (by Tokyo Dawn Records https://www.tokyodawn.net/tdr-nova/)
+# Renegate (by Auburn Sounds https://www.auburnsounds.com/products/Renegate.html)
+# Frontier (by D16 Group https://d16.pl/frontier)
+# T-DEsser (by Techivation https://techivation.com/t-de-esser/)
