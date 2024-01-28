@@ -34,6 +34,8 @@
     - set up SSH keys & adding to local vault
     - Set up GNU Privacy Guard
     - Set up Git default options
+    - custom repo for VST plugins
+    - Handle blank lines in the flatfile lists
 
     vscode settings.json
     ====================
