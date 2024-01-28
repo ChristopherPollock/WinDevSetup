@@ -99,8 +99,8 @@ Yubico.YubikeyManager
 #===========================
 # WSL Images
 #===========================
-#kalilinux.kalilinux
-#Ubuntu
+kalilinux.kalilinux
+Ubuntu
 #===========================
 # Audio FIlters (VSTs)
 #===========================

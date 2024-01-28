@@ -54,8 +54,8 @@ write-host "=============================================================="
 #Install WSL
 wsl --install
 wsl --update
-wsl --install -d kali-linux
-wsl --install -d Ubuntu
+# wsl --install -d kali-linux
+# wsl --install -d Ubuntu 
 
 #==================================================================================================
 #Package Manager Installation  (Winget and Chocolatey) 
@@ -205,6 +205,10 @@ foreach ($key in $Applist.keys) {
 #==================================================================================================
 #App Configurations
 #==================================================================================================
+python -m pip install --upgrade pip
+pip install jupyterlab
+pip install jupyter notebook
+
 
 #oh-my-posh font installation  https://ohmyposh.dev/docs/installation/fonts
 $env:Path += ";C:\Users\user\AppData\Local\Programs\oh-my-posh\bin"
