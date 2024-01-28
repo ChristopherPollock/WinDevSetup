@@ -57,7 +57,7 @@ if (!$hasPackageManager -or [version]$hasPackageManager.Version -lt [version]"1.
 
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     $releases = Invoke-RestMethod -uri $releases_url
-    $latestRelease = $releases.assets | Where { $_.browser_download_url.EndsWith('msixbundle') } | Select -First 1
+    $latestRelease = $releases.assets | Where-Object { $_.browser_download_url.EndsWith('msixbundle') } | Select-Object -First 1
 
     "Installing winget from $($latestRelease.browser_download_url)"
     Add-AppxPackage -Path $latestRelease.browser_download_url
@@ -124,7 +124,7 @@ foreach ($key in $Applist.keys) {
         winget install --silent $key --accept-package-agreements
     }
     else {
-        Write-host "Skipping Install of" $key "(line" $Applist[$key] ")"
+        Write-host "Skipping Install of" $key "(line" $Applist[$key]")"
     }
 }
 
