@@ -10,29 +10,30 @@
     Install Overview Notes:
     =======================
     - Install Windows Subsystem for Linux (WSL)
-    - Install Chocolately
+    - Install Winget package manager (Prefer this over Chocolatey)
+    - Install Chocolatey Package Manager
+    - Install WInget applist from flatfile
+    - Install Chocolately applist from flatfile 
 
-    - Run through packagelist to install each choco package
-    - Download and Install WSL2 update
-    - Download and install Powershell Core
-    - Apply Windows Terminal settings.json file
-    - Set up Windows ternminal powerline
-
-    Next Mods required
+    Todo's
     ==================
-    - install "MesloLGM NF" Font set
-    - install WTTerminal to add ability to modify config from command.
+    - Check/validate: are there any windows features needed or services that need to be enabled?
+    - Use a single list for apps and use chocolatey only for apps that can't be found in winget repos
+    - for VSCode: read in and then modify some of the config elements (such as terminal font selection to use installed nerdfonts) 
+    - for Python:Add PIP package manager, conditional on python installer
+    - Write out MS terminal config files
+    - Log to a file 
+    - script out GIT options
+    - Script out SSH key generation and adding to local vault
 
     Manual Installation steps after this script is complete (will figure out how to script some of this stuff later)
     =======================================================
     - VSCode Plugin Install: Shell Launcher + change keymap (https://github.com/Tyriar/vscode-shell-launcher)
     - VSCode github connect and sync settings
-    - Putty full installer (choco package only seems to be the limited )
     - Enable and autostart OpenSSH Agent Service
     - set up SSH keys & adding to local vault
     - Set up GNU Privacy Guard
     - Set up Git default options
-    - 
 
     vscode settings.json
     ====================
@@ -41,13 +42,19 @@
     "terminal.integrated.shellArgs.windows": ["-NoLogo"]
 #>
 
+#==================================================================================================
+#Windows Prep/ configuration
+#==================================================================================================
 #Install WSL
 wsl --install
 wsl --install -d kali-linux
 wsl --install -d Ubuntu
 
-#Install WinGet
-#Based on this gist: https://gist.github.com/crutkas/6c2096eae387e544bd05cde246f23901
+#==================================================================================================
+#Package Manager Installation  (Winget and Chocolatey) 
+#==================================================================================================
+
+#Install & Configure WinGet.  Based on this gist: https://gist.github.com/crutkas/6c2096eae387e544bd05cde246f23901
 $hasPackageManager = Get-AppPackage -name 'Microsoft.DesktopAppInstaller'
 if (!$hasPackageManager -or [version]$hasPackageManager.Version -lt [version]"1.10.0.0") {
     "Installing winget Dependencies"
@@ -81,7 +88,7 @@ $settingsJson =
 "@;
 $settingsJson | Out-File $settingsPath -Encoding utf8
 
-# install/Boostrap Chocolatey. Detailed instructions: https://chocolatey.org/install
+# install Chocolatey. Detailed instructions: https://chocolatey.org/install
 $Chocoinstalled = $false
 if (get-command choco.exe -ErrorAction SilentlyContinue){
     $Chocoinstalled = $true
@@ -93,7 +100,10 @@ if (!$Chocoinstalled) {
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
 
-#Winget installs (try to use winget by default, use choco for packages that aren't available in the Microsoft public repos) https://chocolatey.org/packages
+#==================================================================================================
+#Winget app installs.  Assumes whatever source (community?) repos were set up in the config.
+#==================================================================================================
+
 # Define the path to your text file
 $textFilePath = ".\winget_PackageList"
 
@@ -128,14 +138,20 @@ foreach ($key in $Applist.keys) {
     }
 }
 
+#==================================================================================================
+#Choco App Installs. from community repo: https://chocolatey.org/packages
+#==================================================================================================
 
-#Choco Installations from community repo: https://chocolatey.org/packages
 Get-Content ".\Choco_PackageList" | ForEach-Object {$_ -split "\r\n"} | ForEach-Object {
     if ($_.substring(0,1) -ne '#') {
         choco install -y $_
     }
 }
 
-#install the oh-my-posh fonts  https://ohmyposh.dev/docs/installation/fonts
+#==================================================================================================
+#App Configuration Section
+#==================================================================================================
+
+#oh-my-posh font installation  https://ohmyposh.dev/docs/installation/fonts
 $env:Path += ";C:\Users\user\AppData\Local\Programs\oh-my-posh\bin"
 oh-my-posh font install

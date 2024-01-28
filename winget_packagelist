@@ -1,41 +1,66 @@
-#packs here need to be identified by ther ID.  TO find what this is for packages you want to add use this command in powershell 'winget search <appname>
+#To find fully qualifies packages to add to this list, use 'winget search -q <appname>''
 #===========================
-#Standard Desktop Apps
+#Standard Desktop Apps & runntime libraries needed
 #===========================
+Microsoft.VCRedist.2015+.x64
+Microsoft.DotNet.Runtime.8
+Microsoft.DotNet.DesktopRuntime.8
+Oracle.JavaRuntimeEnvironment
 AgileBits.1Password
 SlackTechnologies.Slack
-#Microsoft.Teams
-#Microsoft.OneDrive
-#Microsoft.Office
-Microsoft.PowerBI
 Google.Chrome
 Google.ChromeRemoteDesktop
 Brave.Brave
 Mozilla.Firefox
-Microsoft.DotNet.Runtime.8
-Microsoft.DotNet.DesktopRuntime.8
-Oracle.JavaRuntimeEnvironment
 VideoLAN.VLC
 Amazon.Kindle
 Amazon.SendToKindle
 Adobe.Acrobat.Reader.64-bit
 Grammarly.Grammarly.Office
-Grammarly.Grammarly
+Grammarly.Grammarly 
+#Microsoft.Teams
+#Microsoft.OneDrive
+#Microsoft.Office
+#===========================
+#content creator
+#===========================
+OBSProject.OBSStudio
+#===========================
+#Design, Graphics, Documentation Tools
+#===========================
+Figma.Figma
+Miro.Miro
 JGraph.Draw
+Obsidian.Obsidian
+TechSmith.Snagit.2024
 #===========================
-#Development
+#Data Management & Visualization
 #===========================
-Microsoft.VCRedist.2015+.x64
-KDE.KDiff3
-Notepad++.Notepad++
-Microsoft.XMLNotepad
-Microsoft.VisualStudioCode
-Microsoft.DotNet.SDK.8
-Oracle.JDK.21
-Python.Python.3.9
+Microsoft.PowerAutomateDesktop
+Microsoft.PowerBI
+#===========================
+#Development IDEs, SDKs, plugins libraries and tools
+#===========================
 Git.Git
 GitHub.GitHubDesktop
 GitExtensionsTeam.GitExtensions
+Microsoft.DotNet.SDK.8
+Oracle.JDK.21
+Python.Python.3.9
+GitHub.cli
+Microsoft.PowerAppsCLI
+Amazon.AWSCLI
+Microsoft.AzureCLI
+Google.CloudSDK
+OpenJS.NodeJS
+Docker.DockerDesktop
+Microsoft.PowerShell
+Microsoft.VisualStudioCode
+Microsoft.XMLNotepad
+Notepad++.Notepad++
+KDE.KDiff3
+Postman.Postman
+Postman.Postman.Canary
 Hashicorp.Terraform
 Hashicorp.Vault
 #Hashicorp.Packer
@@ -43,51 +68,28 @@ Hashicorp.Vault
 #Hashicorp.Boundary
 #Hashicorp.Consul
 TerraformLinters.tflint
-JanDeDobbeleer.OhMyPosh
-Microsoft.PowerAutomateDesktop
-OpenJS.NodeJS
-Postman.Postman.Canary
-Obsidian.Obsidian
-GitHub.cli
-Microsoft.PowerAppsCLI
-Amazon.AWSCLI
-Microsoft.AzureCLI
-Google.CloudSDK
-Figma.Figma
-Miro.Miro
-#===========================
-#content creator
-#===========================
-OBSProject.OBSStudio
 #===========================
 # Utilities
 #===========================
+Sysinternals
+Microsoft.PowerToys
+Microsoft.WindowsTerminal
+JanDeDobbeleer.OhMyPosh
 JanDeDobbeleer.Aliae
 PuTTY.PuTTY
 WinSCP.WinSCP
 7zip.7zip
 RARLab.WinRAR
 WinDirStat.WinDirStat
-FireDaemon.OpenSSL
-GnuPG.Gpg4win
-Microsoft.WindowsTerminal
-Microsoft.PowerToys
-Microsoft.PowerShell
-Docker.DockerDesktop
-Sysinternals
-TechSmith.Snagit.2024
-#===========================
-# WSL Images
-#===========================
-kalilinux.kalilinux
-Ubuntu
 #===========================
 # Security & Network
 #===========================
+FireDaemon.OpenSSL
+GnuPG.Gpg4win
 OpenWhisperSystems.Signal
+Yubico.YubikeyManager
 #OpenVPNTechnologies.OpenVPN
 #NordSecurity.NordVPN
-Yubico.YubikeyManager
 #TorProject.TorBrowser
 #Insecure.Nmap
 #WiresharkFoundation.Wireshark
@@ -95,3 +97,8 @@ Yubico.YubikeyManager
 #PortSwigger.BurpSuite.Community
 #PortSwigger.BurpSuite.Professional
 #Tenable.Nessus
+#===========================
+# WSL Images
+#===========================
+#kalilinux.kalilinux
+#Ubuntu
