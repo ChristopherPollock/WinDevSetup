@@ -3,10 +3,14 @@ A Powershell project that installs a number of software titles specified in eith
 
 Before you run bootstrap.ps1, you will need to first set the execution policy with the following two commands:
 
-Set-ExecutionPolicy Bypass -Scope Process
+   ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process
+    set-executionpolicy remotesigned
+   ```
 
-set-executionpolicy remotesigned
+Run the bootstrap.ps1 file from an elevated prompt:
+  ```powershell
+  .\bootstrap.ps1 -RunAsAdministrator
+  ```
 
-Run the bootstrap.ps1 file from an elevated prompt.  .\bootstrap.ps1 -RunAsAdministrator
-
-
+  I do not warranty any of this code.  Read the code before you run it.  I am not responsible for any damages you incur from this. 
