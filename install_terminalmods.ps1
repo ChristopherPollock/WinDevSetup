@@ -3,7 +3,8 @@
 install-module oh-my-posh -scope CurrentUser -force
 install-module posh-git -Scope CurrentUser -force
 install-module wttoolbox -Scope CurrentUser -force
- #>function add-Font() {
+ #>
+ function add-Font() {
     [CmdletBinding()]
     param (
         [parameter()]$FontURI,
@@ -39,25 +40,43 @@ if (!(Test-Path -Path $PROFILE)) {
     New-Item -ItemType File -Path $PROFILE -Force
 }
 
-$PoshGit="Import-Module posh-git"
-$OhMyGosh="Import-Module oh-my-posh"
-$PSRL="import-module PSReadLine"
-$SetTheme="Set-PoshPrompt -Theme paradox"
+Install-Module -Name 'posh-git' -Scope 'CurrentUser'
+Install-Module -Name 'Az.Tools.Predictor' -Scope 'CurrentUser'
+Install-Module -Name 'terminal-icons' -Scope 'CurrentUser'
+Install-Module -Name 'PSReadLine' -AllowPrerelease -Scope 'CurrentUser' -Force
+Install-Module -Name 'Az.Tools.Predictor' -Scope 'CurrentUser'
+Install-Module -Name 'Az.Tools.Accounts' -Scope 'CurrentUser'
+
+
+$TI="Import-Module 'Terminal-Icons'"
+$PoshGit="Import-Module 'posh-git'"
+$PSRL="Import-module 'PSReadLine'"
+$PSTP="Import-module 'Az.Tools.Predictor'"
+$SetTheme="Set-Theme 'Paradox'"
+$SetReadLine="Set-PSReadLineOption -PredictionSource 'HistoryAndPlugin' -PredictionViewStyle 'ListView'"
+
+if (!(select-string -path $PROFILE -pattern $TI)) {
+add-content -Path $PROFILE -value $TI
+}
 
 if (!(select-string -path $PROFILE -pattern $PoshGit)) {
     add-content -Path $PROFILE -value $PoshGit
-}
-
-if (!(select-string -path $PROFILE -pattern $OhMyGosh)) {
-    add-content -Path $PROFILE -value $OhMyGosh
 }
 
 if (!(select-string -path $PROFILE -pattern $PSRL)) {
     add-content -Path $PROFILE -value $PSRL
 }
 
+if (!(select-string -path $PROFILE -pattern $PSTP)) {
+    add-content -Path $PROFILE -value $PSTP
+}
+
 if (!(select-string -path $PROFILE -pattern $SetTheme)) {
     add-content -Path $PROFILE -value $SetTheme 
+}
+
+if (!(select-string -path $PROFILE -pattern $SetReadLine)) {
+    add-content -Path $PROFILE -value $SetReadLine 
 }
 
 write-output "Downloading MS Cascadia Code font..."
